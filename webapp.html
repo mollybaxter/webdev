@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .riddle {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .riddle:hover {
+      color: #0077cc;
+    }
+
+    .button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #0077cc;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Riddle Generator</h1>
+    <div id="riddle" class="riddle">Click "New Riddle" to begin!</div>
+    <button class="button" onclick="showRiddle()">New Riddle</button>
+  </div>
+
+  <script>
+    const riddles = [
+      { question: "What has to be broken before you can use it?", answer: "An egg." },
+      { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "A candle." },
+      { question: "What month of the year has 28 days?", answer: "All of them." },
+      { question: "What is full of holes but still holds water?", answer: "A sponge." },
+      { question: "What question can you never answer yes to?", answer: "Are you asleep yet?" },
+      { question: "What is always in front of you but can’t be seen?", answer: "The future." },
+      { question: "What goes up but never comes down?", answer: "Your age." },
+      { question: "What gets wetter the more it dries?", answer: "A towel." },
+      { question: "What has to be broken before you can use it?", answer: "An egg." },
+      { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "A candle." },
+      { question: "What month of the year has 28 days?", answer: "All of them." },
+      { question: "What is full of holes but still holds water?", answer: "A sponge." },
+      { question: "What question can you never answer yes to?", answer: "Are you asleep yet?" },
+      { question: "What is always in front of you but can’t be seen?", answer: "The future." },
+      { question: "What goes up but never comes down?", answer: "Your age." },
+      { question: "What gets wetter the more it dries?", answer: "A towel." },
+      { question: "What can you keep after giving to someone?", answer: "Your word." },
+      { question: "I have branches, but no fruit, trunk or leaves. What am I?", answer: "A bank." },
+      { question: "The more of me you take, the more you leave behind. What am I?", answer: "Footsteps." },
+      { question: "People buy me to eat, but never eat me. What am I?", answer: "A plate." },
+      { question: "I shave every day, but my beard stays the same. What am I?", answer: "A barber." },
+      { question: "I’m found in socks, scarves and mittens; and often in the paws of playful kittens. What am I?", answer: "Yarn." },
+      { question: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?", answer: "An echo." },
+      { question: "What can travel around the world while staying in the same corner?", answer: "A stamp." },
+      { question: "You see a boat filled with people. It hasn’t sunk, but when you look again, you don’t see a single person on the boat. Why?", answer: "All the people were married." },
+      { question: "What has one eye, but can’t see?", answer: "A needle." },
+      { question: "What can’t talk but will reply when spoken to?", answer: "An echo." },
+      { question: "I have keys but no locks. I have space but no room. You can enter, but you can’t go outside. What am I?", answer: "A keyboard." }
+      
+    ];
+
+    let currentRiddle = null;
+    let showingAnswer = false;
+
+    function showRiddle() {
+      const index = Math.floor(Math.random() * riddles.length);
+      currentRiddle = riddles[index];
+      showingAnswer = false;
+      document.getElementById('riddle').textContent = currentRiddle.question;
+    }
+
+    document.getElementById('riddle').addEventListener('click', () => {
+      if (currentRiddle && !showingAnswer) {
+        document.getElementById('riddle').textContent = currentRiddle.answer;
+        showingAnswer = true;
+      }
+    });
+  </script>
+</body>
+</html>
